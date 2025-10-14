@@ -1146,13 +1146,4 @@ CDN:
     # waline_css:
     # waline_js:
 
-  # Artitalk
-  # see https://artitalk.js.org/
-  artitalk:
-    enable: true
-    appId: 2qQXwo0rweWTMDmplm8HPVa1-MdYXbMMI
-    appKey: DiVHTQmv4RDIUrG5sqhWBCSM
-    path: artitalk/index.md
-    js:
-    option:
-    front_matter:
+  
