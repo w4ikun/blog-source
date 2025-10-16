@@ -39,7 +39,7 @@ external_link:
   field: site # Apply to the whole site
   exclude: ''
 filename_case: 0
-render_drafts: false
+render_drafts: false #是否显示草稿
 post_asset_folder: false
 relative_link: false
 future: true
@@ -134,3 +134,25 @@ deploy:
     js:
     option:
     front_matter:
+
+# valine:
+#   appId:
+#   appKey:
+#   avatar: monsterid
+#   # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+#   serverURLs:
+#   bg:
+#   # Use Valine visitor count as the page view count
+#   visitor: false
+#   option:
+
+
+valine:
+  enable: true          # 开启 Valine
+  appId: f9tBddR5ppnehRkynrlrzeWO-gzGzoHsz
+  appKey: rWc4DXb1olZlomGmvBXGybnv
+  placeholder: 来说点什么吧~  # 评论框默认提示语
+  avatar: mp            # 头像样式（可选：mp/identicon/monsterid等）
+  pageSize: 10          # 每页显示评论数
+  lang: zh-CN           # 语言
+  visitor: true         # 是否开启文章阅读量统计
