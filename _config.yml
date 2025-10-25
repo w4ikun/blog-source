@@ -4,17 +4,17 @@
 
 # Site
 title: 第三人称
-subtitle: ''
-description: ''
-keywords:
+subtitle: '二级标题'
+description: '描述你的博客'
+keywords: '博客, Hexo, 第三人称' # Separate multiple keywords with commas
 author: 第三人称
-language: cn
+language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: https://w4ikun.github.io
+permalink: :hash/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -31,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :hash/ # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -134,25 +134,3 @@ deploy:
     js:
     option:
     front_matter:
-
-# valine:
-#   appId:
-#   appKey:
-#   avatar: monsterid
-#   # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
-#   serverURLs:
-#   bg:
-#   # Use Valine visitor count as the page view count
-#   visitor: false
-#   option:
-
-
-valine:
-  enable: true          # 开启 Valine
-  appId: f9tBddR5ppnehRkynrlrzeWO-gzGzoHsz
-  appKey: rWc4DXb1olZlomGmvBXGybnv
-  placeholder: 来说点什么吧~  # 评论框默认提示语
-  avatar: mp            # 头像样式（可选：mp/identicon/monsterid等）
-  pageSize: 10          # 每页显示评论数
-  lang: zh-CN           # 语言
-  visitor: true         # 是否开启文章阅读量统计

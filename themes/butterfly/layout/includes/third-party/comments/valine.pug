@@ -1,5 +1,5 @@
 - const { use, lazyload } = theme.comments
-- const { appId, appKey, avatar, serverURLs, visitor, option } = theme.valine
+- const { appId, appKey, avatar, serverURLs, visitor, option, placeholder } = theme.valine
 
 - let emojiMaps = '""'
 if site.data.valine
@@ -28,6 +28,7 @@ script.
         serverURLs: '#{serverURLs}',
         emojiMaps: !{emojiMaps},
         visitor: #{visitor},
+        placeholder: isShuoshuo ? '说点什么吧...' : '#{placeholder || "填写邮箱可以收到回复提醒哦~"}',
         ...option,
         path: isShuoshuo ? path : (option && option.path) || window.location.pathname
       }

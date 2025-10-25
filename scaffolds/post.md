@@ -3,13 +3,3 @@ title: {{ title }}
 date: {{ date }}
 tags:
 ---
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
- <div id="vcomments"></div>
-   <script>
-        new Valine({
-            el: '#vcomments',
-            appId: "f9tBddR5ppnehRkynrlrzeWO-gzGzoHsz",
-      appKey: "rWc4DXb1olZlomGmvBXGybnv",
-        })
-    </script>
