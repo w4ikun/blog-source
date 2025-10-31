@@ -98,21 +98,19 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: butterfly
 
+#自动部署
+# Docs: https://hexo.io/docs/one-command-deployment
 # Deployment-gitee
-## Docs: https://hexo.io/docs/one-command-deployment
 # deploy:  
 #   type: git
 #   repository: git@gitee.com:M-kun/ikun-blog.git
 #   branch: master
-
-
 # Deployment-github
-## Docs: https://hexo.io/docs/one-command-deployment
 deploy:  
   type: git
   repository: git@github.com:w4ikun/w4ikun.github.io.git
   branch: main
-
+  
 # Artitalk--global
   # see https://artitalk.js.org/
   # artitalk:
@@ -123,7 +121,6 @@ deploy:
   #   js:
   #   option:
   #   front_matter:
-
 # Artitalk--china
   # see https://artitalk.js.org/
   artitalk:
