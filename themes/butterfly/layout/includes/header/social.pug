@@ -1,8 +1,26 @@
+//- each url, icon in theme.social
+//-   -
+//-     const [link, title, color] = url.split('||').map(i => trim(i))
+//-     const href = url_for(link)
+//-     const iconStyle = color ? `color: ${color.replace(/[\'\"]/g, '')};` : ''
+//-     const iconTitle = title || ''
+//-   a.social-icon(href=href target="_blank" title=iconTitle)
+//-     i(class=icon style=iconStyle)
+//- 支持svg彩色图标
 each url, icon in theme.social
   -
-    const [link, title, color] = url.split('||').map(i => trim(i))
+    const [link, title, color] = url.split('||').map(i => i.trim())
     const href = url_for(link)
     const iconStyle = color ? `color: ${color.replace(/[\'\"]/g, '')};` : ''
     const iconTitle = title || ''
+    // 判断是否为SVG图标（通过前缀识别）
+    const isSvgIcon = icon.startsWith('svg-')
+    const svgId = isSvgIcon ? icon.replace('svg-', '') : ''
   a.social-icon(href=href target="_blank" title=iconTitle)
-    i(class=icon style=iconStyle)
+    if isSvgIcon
+      //- 多色SVG图标渲染
+      svg.icon(aria-hidden="true" style=iconStyle)
+        use(xlink:href=`#${svgId}`)
+    else
+      //- 原有字体图标渲染
+      i(class=icon style=iconStyle)
