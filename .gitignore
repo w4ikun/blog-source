@@ -1,7 +1,29 @@
+# Hexo 相关
 node_modules/
 public/
-Test/
 .deploy_git/
 *.log
+db.json
+_multiconfig.yml
+
+# 操作系统文件
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+
+# 编辑器/IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 测试文件夹
+Test/
+
+# 其他
+yarn-error.log
+npm-debug.log*
