@@ -1,4 +1,4 @@
-name: Deploy Hexo to GitHub Pages v1
+name: Deploy Hexo to GitHub Pages v2
 
 on:
   push:
@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        # 可选：如果使用了主题子模块，需要拉取子模块
+        with:
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,8 +26,9 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+          npm install -g hexo-cli  # 全局安装 Hexo 命令行工具（核心修复）
 
-      - name: Build
+      - name: Build Hexo site
         run: |
           hexo clean
           hexo generate
