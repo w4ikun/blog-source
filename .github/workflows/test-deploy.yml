@@ -1,0 +1,50 @@
+name: Test Deploy
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'npm'  # 添加缓存，加速后续运行
+        
+    - name: Install dependencies
+      run: |
+        echo "开始安装依赖..."
+        npm ci  # 使用 npm ci 而不是 npm install，更可靠
+        echo "安装完成！"
+        
+    - name: Build Hexo site
+      run: |
+        echo "=== Hexo 版本 ==="
+        npx hexo version
+        echo ""
+        echo "=== 清理 ==="
+        npx hexo clean
+        echo ""
+        echo "=== 生成静态文件 ==="
+        npx hexo generate
+        echo ""
+        echo "=== 生成的文件 ==="
+        ls -la public/
+        echo ""
+        echo "=== 文件数量 ==="
+        find public/ -type f | wc -l
+        
+    - name: Show build info
+      run: |
+        echo "🎉 Build completed!"
+        echo "📁 查看 public/ 目录的内容"
+        echo "📊 总文件数: $(find public/ -type f | wc -l)"
+        echo "🔗 Actions URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
