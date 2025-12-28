@@ -14,7 +14,7 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://w4ikun.github.io
-permalink: :hash/
+permalink: :hash/ # 设置为 :hash/ 以避免重复的文件名
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -31,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :hash/ # File name of new posts
+new_post_name: :year-:month-:day/:title.md # 本地创建文章名称 :hash/
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
