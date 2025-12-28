@@ -1,7 +1,8 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily  # 这里的自动调度会被 manual_trigger_only 覆盖
+    open-pull-requests-limit: 20
+    manual_trigger_only: true  # 核心：禁用自动触发，仅支持手动触发
