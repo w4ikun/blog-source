@@ -2,15 +2,12 @@ name: Deploy Hexo to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ master ]  # 改为 master，如果你用的是 master 分支
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     steps:
     - name: Checkout source code
@@ -27,24 +24,18 @@ jobs:
         
     - name: Install dependencies
       run: |
-        npm ci --cache .npm --prefer-offline
+        npm install
         
     - name: Build
       run: |
-        npm run build
-        
-    - name: Configure Git
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "github-actions@github.com"
+        hexo clean
+        hexo generate
         
     - name: Deploy to w4ikun.github.io
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         external_repository: w4ikun/w4ikun.github.io
-        publish_branch: main
+        publish_branch: master  # 这里也要改
         publish_dir: ./public
         cname: blog.anobserver.xyz
-        keep_files: false
-        force_orphan: true
