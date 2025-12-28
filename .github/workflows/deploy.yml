@@ -3,14 +3,17 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     steps:
-    - name: Checkout code
+    - name: Checkout source code
       uses: actions/checkout@v4
       with:
         submodules: recursive
@@ -23,16 +26,25 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci --cache .npm --prefer-offline
         
-    - name: Generate static files
+    - name: Build
       run: |
         npm run build
         
-    - name: Deploy to GitHub Pages
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "github-actions@github.com"
+        
+    - name: Deploy to w4ikun.github.io
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        deploy_key: ${{ secrets.DEPLOY_KEY }}
+        external_repository: w4ikun/w4ikun.github.io
+        publish_branch: main
         publish_dir: ./public
-        # 如果你有自定义域名，取消下面注释
-        cname: https://blog.anobserver.xyz/
+        cname: blog.anobserver.xyz
+        keep_files: false
+        force_orphan: true
