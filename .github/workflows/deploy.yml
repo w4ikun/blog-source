@@ -1,4 +1,4 @@
-name: Deploy Hexo to GitHub Pages
+name: Deploy Hexo to GitHub Pages v1
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }} # 改用 SSH 密钥
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
           external_repository: w4ikun/w4ikun.github.io
           publish_branch: master
           publish_dir: ./public
